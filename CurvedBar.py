@@ -4,7 +4,7 @@ import math
 
 class CurvedBar:
 
-    def __init__(self, parent, width=300, height=300, max_value=100, benchmark={'amber': 50, 'red': 80}):
+    def __init__(self, parent, width=300, height=300, max_value=100, benchmark={'amber': 50, 'red': 80}, title='Untitled'):
         self.benchmark_color = '#00ff00'
         self.max_value = max_value
         self.current_value = 0
@@ -29,7 +29,8 @@ class CurvedBar:
         self.progress_arc = self.canvas.create_arc(20, 20, width-20, height-20, start=180, extent=0,
                                                    outline=self.benchmark_color, width=15, style=tk.ARC)
 
-        # Text to show percentage
+        # Text to show percentage + title 
+        self.value_label = self.canvas.create_text(width // 2, height // 2.5, text=title, font=("Arial", 20), fill="white")
         self.value_label = self.canvas.create_text(width // 2, height // 2, text="0% power", font=("Arial", 20), fill="white")
 
     def check_benchmark(self):
